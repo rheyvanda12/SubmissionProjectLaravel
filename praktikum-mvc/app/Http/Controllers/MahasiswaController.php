@@ -29,4 +29,14 @@ class MahasiswaController extends Controller
 
         return view('mahasiswa.daftar', compact('mahasiswa'));
     }
+        public function detail($nim)
+    {
+        $mhs = collect($this->dataMahasiswa())->firstWhere('nim', $nim);
+
+        if (!$mhs) {
+            abort(404);
+        }
+
+        return view('mahasiswa.detail', compact('mhs'));
+    }
 }

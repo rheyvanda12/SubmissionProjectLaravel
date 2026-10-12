@@ -5,7 +5,7 @@
 @section('content')
     <h1>Daftar Mahasiswa</h1>
     <table border="1">
-        <tr><th>No</th><th>Nama</th><th>NIM</th><th>IPK</th><th>Keterangan</th></tr>
+        <tr><th>No</th><th>Nama</th><th>NIM</th><th>IPK</th><th>Keterangan</th><th>Aksi</th></tr>
         @forelse ($mahasiswa as $m)
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -18,9 +18,10 @@
                     @else Perlu ditingkatkan
                     @endif
                 </td>
+                <td><a href="{{ route('mahasiswa.detail', $m['nim']) }}">Detail</a></td>
             </tr>
         @empty
-            <tr><td colspan="5">Belum ada data</td></tr>
+            <tr><td colspan="6">Belum ada data</td></tr>
         @endforelse
     </table>
 @endsection
