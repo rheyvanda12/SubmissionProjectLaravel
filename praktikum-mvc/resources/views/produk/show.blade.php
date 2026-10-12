@@ -1,0 +1,1 @@
+<h1>Detail Produk {{ $id }}</h1>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProdukController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -66,6 +66,12 @@ Route::prefix('petugas')->name('petugas.')->group(function () {
     Route::get('/anggota/{id}', fn (int $id) => "Data anggota nomor {$id}")
         ->name('anggota');
 });
+Route::permanentRedirect('/katalog-lama', '/info');
+
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('produk.show');
+Route::resource('produk', ProdukController::class);
+
 
 Route::redirect('/home', '/');
 
